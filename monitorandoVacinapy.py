@@ -21,6 +21,7 @@ def monitorar_vacinas(link, str_busca):
         resp = req.get(link).text
     except:
         print("Falhou")
+        return
 
     soup = BeautifulSoup(resp, features="html5lib")
     row = soup.find_all("div", {"class": "row"})
@@ -40,6 +41,8 @@ def monitorar_vacinas(link, str_busca):
             if str_busca in classe:
                 playsound("alerta.mp3")
 
+    time.sleep(30)
+
 
 while True:
     agora = datetime.datetime.now()
@@ -48,5 +51,4 @@ while True:
         print()
         print("Acessando o site...")
         monitorar_vacinas(link_atual, busca)
-        time.sleep(30)
 
