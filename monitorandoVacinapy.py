@@ -40,7 +40,7 @@ while True:
         print("Acessando o site...")
         try:
             monitorar_vacinas(link_atual, busca)
-            time.sleep(60)
+            time.sleep(30)
         except:
             print("Falhou")
 
