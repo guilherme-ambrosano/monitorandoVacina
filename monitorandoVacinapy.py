@@ -38,6 +38,9 @@ while True:
     if agora >= datetime_busca:
         print()
         print("Acessando o site...")
-        monitorar_vacinas(link_atual, busca)
-        time.sleep(60)
+        try:
+            monitorar_vacinas(link_atual, busca)
+            time.sleep(60)
+        except:
+            print("Falhou")
 
