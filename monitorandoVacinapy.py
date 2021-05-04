@@ -8,6 +8,7 @@ from playsound import playsound
 
 from configuracoes import busca, horario
 
+from unidecode import unidecode
 
 horario_busca = datetime.datetime.strptime(horario, "%H:%M") - datetime.timedelta(minutes=15)
 
@@ -38,7 +39,7 @@ def monitorar_vacinas(link, str_busca):
     else:
         for classe in classes:
             print(classe)
-            if str_busca in classe:
+            if unidecode(str_busca.lower()) in unidecode(classe.lower()):
                 playsound("alerta.mp3")
 
     time.sleep(30)
