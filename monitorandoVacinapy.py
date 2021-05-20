@@ -31,7 +31,8 @@ def monitorar_vacinas(link, str_busca):
         print("Falhou")
         return
 
-    classes = row[0].find_all("fieldset", {"class": "documentos"})
+    classes = list(map(lambda x: x.find_all("fieldset", {"class": "documentos"}), row))
+    classes = [elemento for linha in classes for elemento in linha]
     classes = list(map(lambda x: x.find_all("p")[1].text, classes))
 
     if len(classes) == 0:
