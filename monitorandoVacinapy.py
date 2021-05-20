@@ -39,7 +39,9 @@ def monitorar_vacinas(link, str_busca):
     else:
         for classe in classes:
             print(classe)
-            if unidecode(str_busca.lower()) in unidecode(classe.lower()):
+
+            encontrou_string = list(map(lambda x: unidecode(x.lower()) in unidecode(classe.lower()), str_busca))
+            if any(encontrou_string):
                 playsound("alerta.mp3")
 
     time.sleep(30)
