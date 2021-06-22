@@ -28,7 +28,7 @@ def monitorar_vacinas(link, str_busca):
     row = soup.find_all("div", {"class": "row"})
 
     if len(row) == 0:
-        print("Falhou")
+        print("Nada ainda...")
         return
 
     classes = list(map(lambda x: x.find_all("fieldset", {"class": "documentos"}), row))
