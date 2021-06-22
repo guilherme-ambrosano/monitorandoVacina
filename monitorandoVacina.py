@@ -18,10 +18,13 @@ link_antigo2 = "https://web.archive.org/web/20210501110705/https://vacinapira.pi
 
 def monitorar_vacinas(link, str_busca):
 
+    segundos_slp = 15
+
     try:
         resp = req.get(link).text
     except:
         print("Falhou")
+        time.sleep(segundos_slp)
         return
 
     soup = BeautifulSoup(resp, features="html5lib")
@@ -29,6 +32,7 @@ def monitorar_vacinas(link, str_busca):
 
     if len(row) == 0:
         print("Nada ainda...")
+        time.sleep(segundos_slp)
         return
 
     classes = list(map(lambda x: x.find_all("fieldset", {"class": "documentos"}), row))
@@ -45,7 +49,7 @@ def monitorar_vacinas(link, str_busca):
             if any(encontrou_string):
                 playsound("alerta.mp3")
 
-    time.sleep(30)
+    time.sleep(segundos_slp)
 
 
 while True:
