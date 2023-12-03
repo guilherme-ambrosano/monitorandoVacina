@@ -18,7 +18,7 @@ link_antigo2 = "https://web.archive.org/web/20210501110705/https://vacinapira.pi
 
 def monitorar_vacinas(link, str_busca):
 
-    segundos_slp = 15
+    segundos_slp = 30
 
     try:
         resp = req.get(link).text
